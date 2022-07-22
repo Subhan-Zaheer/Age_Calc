@@ -3,10 +3,15 @@ import datetime
 def ageCalc_fromcurrentAge(age, current_year):
     ans = 2090 - current_year
     calculated_age = age + ans
+    birth_year_of_user = current_year - age
     print(f"So your age by the year \"2090\" will be \"{calculated_age}\"")
     print(f"More over if you want to know your age in specific year than enter that specific year.")
-    specific_year = int(input("Enter year here : "))
-    birth_year_of_user = current_year - age
+    choice = int(input("Type \"1\" for yes otherwise \"0\" : "))
+    specific_year = 0
+    if choice == 1:
+        specific_year = int(input("Enter year here : "))
+    else:
+        exit(1)
 
     if specific_year < birth_year_of_user:
 
@@ -22,8 +27,11 @@ def ageCalc_frombirthYear(birth_year):
     calculated_age = 2090 - birth_year
     print(f"You will be \"{calculated_age}\" years old in \"2090\".")
     print("More over if you want to know your age in specific year than enter that specific year.")
-    specific_year = int(input("Enter year here : "))
-
+    choice = int(input("Type \"1\" for yes otherwise \"0\" : "))
+    specific_year = 0
+    if choice == 1:
+        specific_year = int(input("Enter year here : "))
+    else : exit(1)
     if specific_year < birth_year:
 
         print("This year is not valid because this year is before your actual birth year. This would be your last chance of entering age.")
@@ -36,7 +44,7 @@ def ageCalc_frombirthYear(birth_year):
 if __name__ == '__main__':
     birth_year = 0
     current_year = datetime.date.today().year
-    input_age = int(input("Enter your age or birth year."))
+    input_age = int(input("Enter your age or birth year : "))
     if input_age >= 130 and input_age <= 1900:
         print("You are the oldest person alive.")
         ageCalc_fromcurrentAge(input_age, current_year)
